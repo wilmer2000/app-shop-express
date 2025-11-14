@@ -27,7 +27,7 @@
     "express": "^5.1.0"
   },
   "imports": {
-    "#*": "./src/*"
+    "#/*": "./src/*"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [

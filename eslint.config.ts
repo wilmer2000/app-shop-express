@@ -6,7 +6,7 @@ import prettierConfig from "eslint-config-prettier";
 
 export default tseslint.config(
   {
-    ignores: ["**/*.js"]
+    ignores: ["**/*.js", "eslint.config.ts", "dist", "coverage"],
   },
   eslint.configs.recommended,
   tseslint.configs.strictTypeChecked,
@@ -14,21 +14,21 @@ export default tseslint.config(
   {
     languageOptions: {
       parserOptions: {
-        projectService: true,
-        tsconfigRootDir: import.meta.dirname
-      }
-    }
+        project: "./tsconfig.json",
+        tsconfigRootDir: __dirname,
+      },
+    },
   },
   perfectionist.configs["recommended-natural"],
   {
     files: ["**/*.test.ts", "**/*.spec.ts"],
     plugins: {
-      vitest
+      vitest,
     },
     rules: {
       ...vitest.configs.recommended.rules,
-      "@typescript-eslint/unbound-method": "off"
-    }
+      "@typescript-eslint/unbound-method": "off",
+    },
   },
-  prettierConfig
+  prettierConfig,
 );
